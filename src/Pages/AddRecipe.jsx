@@ -1,9 +1,45 @@
-import React from 'react';
+import React, { use, useEffect } from 'react';
+import { AuthContext } from '../provider/AuthProvider';
+import swal from 'sweetalert';
 
 const AddRecipe = () => {
 
-    const handleAddRecipe = (e) => {
+    const { user } = use(AuthContext);
+    // console.log(user);
 
+    const handleAddRecipe = e => {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        const newRecipe = Object.fromEntries(formData.entries());
+        newRecipe.userName = user.displayName;
+        newRecipe.userEmail = user.email;
+        newRecipe.userPhoto = user.photoURL;
+
+        // console.log(newRecipe);
+
+        // send coffee data to the db
+        fetch('http://localhost:3000/recipes', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newRecipe)
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                if (data.insertedId) {
+                    // console.log('added successfully.')
+                    Swal.fire({
+                        title: "Recipe added successfully!",
+                        icon: "success",
+                        draggable: true
+                    });
+
+                    //   form.reset()
+                }
+            })
     }
 
     return (
