@@ -1,11 +1,11 @@
-import React, { use, useEffect } from 'react';
+import React, { use} from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import { toast } from 'react-toastify';
 
 
 const OtherSignin = () => {
-    const { signIn, googleSignIn, gitHubSignIn, setUser } = use(AuthContext);
+    const { googleSignIn, gitHubSignIn, setUser } = use(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
 

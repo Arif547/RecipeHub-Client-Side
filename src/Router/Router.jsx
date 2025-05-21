@@ -46,7 +46,7 @@ export const Router = createBrowserRouter([
 
             },
             {
-                path: '/my-recipes',
+                path: '/my-recipes',                
                 element: <PrivateRoute>
                     <MyRecipes></MyRecipes>
                 </PrivateRoute>,

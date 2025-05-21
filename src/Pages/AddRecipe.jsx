@@ -1,4 +1,4 @@
-import React, { use, useEffect } from 'react';
+import React, { use } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
 
