@@ -5,6 +5,7 @@ import LottieRect from '../components/LottieRect';
 import imgWiter from '../assets/image-1-1.png'
 import TestimonialCards from '../components/TestimonialCards';
 import { Typewriter } from 'react-simple-typewriter';
+import Banner from '../components/Banner';
 
 const Home = () => {
     const initialRecipe = useLoaderData();
@@ -12,7 +13,8 @@ const Home = () => {
 
     return (
         <div>
-            <div
+            <Banner></Banner>
+            {/* <div
                 className="hero h-[650px]"
                 style={{
                     backgroundImage:
@@ -46,11 +48,12 @@ const Home = () => {
                         <button className="btn btn-primary">Get Started</button>
                     </div>
                 </div>
-            </div>
+            </div> */}
+            <slider></slider>
 
 
             {/* Recipe Grid */}
-            <div className='max-w-7xl mx-auto py-10 lg:py-28 md:py-20'>
+            <div className='max-w-7xl mx-auto py-10 px-5 lg:py-28 md:py-20'>
                 <h2 className='text-5xl text-center font-bold mb-10'>Top Recipes Loved by Foodies</h2>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                     {
@@ -69,7 +72,7 @@ const Home = () => {
 
             <section className='bg-[#F4E7DF]'>
                 <div className='max-w-7xl mx-auto py-20 px-5 lg:py-28 lg:flex mb-5'>
-                    <div className='lg:w-1/2'>
+                    <div className='lg:w-1/2 mb-5'>
                         <h2 className='text-5xl font-bold mb-10'>Do you need <br></br>⎯ some help?</h2>
                         <img src={imgWiter} alt="" />
                     </div>
@@ -129,7 +132,7 @@ const Home = () => {
             </section>
 
             <TestimonialCards></TestimonialCards>
-            <LottieRect/>
+            <LottieRect />
 
         </div >
     );
