@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import RecipeCard from '../components/RecipeCard';
+import LottieRect from '../components/LottieRect';
 import imgWiter from '../assets/image-1-1.png'
 import TestimonialCards from '../components/TestimonialCards';
 import { Typewriter } from 'react-simple-typewriter';
@@ -128,6 +129,7 @@ const Home = () => {
             </section>
 
             <TestimonialCards></TestimonialCards>
+            <LottieRect/>
 
         </div >
     );

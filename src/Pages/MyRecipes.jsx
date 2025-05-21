@@ -18,16 +18,42 @@ const MyRecipes = () => {
     }, [user.email]);
 
     const handleDelete = async (id) => {
-        const confirm = window.confirm('Are you sure you want to delete this recipe?');
-        if (!confirm) return;
+        // const confirm = window.confirm('Are you sure you want to delete this recipe?');
+        // if (!confirm) return;
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await fetch(`http://localhost:3000/recipes/${id}`, {
+                    method: 'DELETE',
+                });
 
-        const res = await fetch(`http://localhost:3000/recipes/${id}`, {
-            method: 'DELETE',
+                if (res.ok) {
+                    setRecipes(recipes.filter(recipe => recipe._id !== id));
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    });
+                    setRecipes(recipes.filter(recipe => recipe._id !== id));
+
+                }
+            }
         });
-        if (res.ok) {
-            setRecipes(recipes.filter(recipe => recipe._id !== id));
-            toast.success('Recipe deleted successfully');
-        }
+
+        // const res = await fetch(`http://localhost:3000/recipes/${id}`, {
+        //     method: 'DELETE',
+        // });
+        // if (res.ok) {
+        //     setRecipes(recipes.filter(recipe => recipe._id !== id));
+        //     toast.success('Recipe deleted successfully');
+        // }
     };
 
     const handleUpdateClick = (recipe) => {
@@ -58,43 +84,58 @@ const MyRecipes = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    setRecipes(prevRecipes =>
+                        prevRecipes.map(recipe =>
+                            recipe._id === editingRecipe._id ? { ...recipe, ...updatedRecipe } : recipe
+                        )
+                    );
+                    setEditingRecipe(null)
+
                 }
             })
     };
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-10">
+
             <h2 className="text-2xl font-bold mb-6 text-center">My Recipes</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {recipes.map(recipe => (
-                    <div
-                        key={recipe._id}
-                        className="bg-white shadow rounded-xl p-4 border"
-                    >
-                        <img src={recipe.image} alt={recipe.title} className="h-40 w-full object-cover rounded" />
-                        <h3 className="text-xl font-semibold mt-3">{recipe.title}</h3>
-                        <p><strong>Cuisine:</strong> {recipe.cuisine}</p>
-                        <p><strong>Prep Time:</strong> {recipe.prepTime} min</p>
-                        <p><strong>Likes:</strong> {recipe.likes}</p>
-                        <p><strong>Category:</strong> {(Array.isArray(recipe.categories) ? recipe.categories : [recipe.categories]).join(', ')}</p>
-                        <p className="text-sm mt-2"><strong>Ingredients:</strong> {recipe.ingredients}</p>
-                        <p className="text-sm"><strong>Instructions:</strong> {recipe.instructions}</p>
 
-                        <div className="flex justify-between mt-4">
-                            <button
-                                onClick={() => handleUpdateClick(recipe)}
-                                className="btn btn-sm btn-info text-white"
-                            >Update</button>
+            {recipes.length === 0 ? (
+                <div className="flex justify-center items-center h-40">
+                    <p className="text-center text-gray-500 text-lg">You have not added any recipes yet.</p>
+                </div>
+            ) :
+                (
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {recipes.map(recipe => (
+                            <div
+                                key={recipe._id}
+                                className="bg-white shadow rounded-xl p-4 border"
+                            >
+                                <img src={recipe.image} alt={recipe.title} className="h-40 w-full object-cover rounded" />
+                                <h3 className="text-xl font-semibold mt-3">{recipe.title}</h3>
+                                <p><strong>Cuisine:</strong> {recipe.cuisine}</p>
+                                <p><strong>Prep Time:</strong> {recipe.prepTime} min</p>
+                                <p><strong>Likes:</strong> {recipe.likes}</p>
+                                <p><strong>Category:</strong> {(Array.isArray(recipe.categories) ? recipe.categories : [recipe.categories]).join(', ')}</p>
+                                <p className="text-sm mt-2"><strong>Ingredients:</strong> {recipe.ingredients}</p>
+                                <p className="text-sm"><strong>Instructions:</strong> {recipe.instructions}</p>
 
-                            <button
-                                onClick={() => handleDelete(recipe._id)}
-                                className="btn btn-sm btn-error text-white"
-                            >Delete</button>
-                        </div>
+                                <div className="flex justify-between mt-4">
+                                    <button
+                                        onClick={() => handleUpdateClick(recipe)}
+                                        className="btn btn-sm btn-info text-white"
+                                    >Update</button>
+
+                                    <button
+                                        onClick={() => handleDelete(recipe._id)}
+                                        className="btn btn-sm btn-error text-white"
+                                    >Delete</button>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
-
+                )}
             {/* Modal */}
             {editingRecipe && (
                 <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
