@@ -35,7 +35,7 @@ const Header = () => {
 
                 {
                     user ? <div className='flex gap-4 lg:justify-end justify-center'>
-                        <Link to='/my-profile'> <img className='w-10 rounded-[100%]' src={`${user ? user.photoURL : userProfile}`} alt="" /> </Link>
+                        <Link to='/my-profile'> <img className='w-10 h-10 object-cover rounded-[100%]' src={`${user ? user.photoURL : userProfile}`} alt="" /> </Link>
                         <button onClick={handleLogOut} className="btn btn-primary">Log Out</button>
                     </div> : <div className='flex gap-4 lg:justify-end justify-center'>
                         <Link to='/login' className="btn  btn-primary">Login</Link>

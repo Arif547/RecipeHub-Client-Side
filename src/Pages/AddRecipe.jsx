@@ -1,6 +1,6 @@
 import React, { use, useEffect } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 const AddRecipe = () => {
 
@@ -12,11 +12,13 @@ const AddRecipe = () => {
         const form = e.target;
         const formData = new FormData(form);
         const newRecipe = Object.fromEntries(formData.entries());
+        newRecipe.categories = formData.getAll('categories');
         newRecipe.userName = user.displayName;
         newRecipe.userEmail = user.email;
         newRecipe.userPhoto = user.photoURL;
+        newRecipe.createdAt = new Date().toISOString();
 
-        // console.log(newRecipe);
+        console.log(newRecipe);
 
         // send coffee data to the db
         fetch('http://localhost:3000/recipes', {
@@ -37,7 +39,7 @@ const AddRecipe = () => {
                         draggable: true
                     });
 
-                    //   form.reset()
+                    form.reset()
                 }
             })
     }
@@ -97,7 +99,7 @@ const AddRecipe = () => {
                         </div>
                     </fieldset>
 
-                    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
+                    {/* <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
                         <label className="label">Taste</label>
                         <input type="text" name="taste" className="input w-full" placeholder="e.g. Sweet, Spicy" />
                     </fieldset>
@@ -110,7 +112,7 @@ const AddRecipe = () => {
                     <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4 md:col-span-2">
                         <label className="label">Details</label>
                         <input type="text" name="details" className="input w-full" placeholder="Additional Details" />
-                    </fieldset>
+                    </fieldset> */}
 
                     {/* Like Count - Hidden by default, managed in backend */}
                     <input type="hidden" name="likes" value="0" />

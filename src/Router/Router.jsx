@@ -8,6 +8,8 @@ import MyRecipes from '../Pages/MyRecipes';
 import Login from '../Pages/Login';
 import Register from '../Pages/Register';
 import PrivateRoute from '../provider/PrivateRoute';
+import AllRecipes from '../Pages/AllRecipes';
+import RecipeDetails from '../Pages/RecipeDetails';
 
 export const Router = createBrowserRouter([
     {
@@ -18,22 +20,37 @@ export const Router = createBrowserRouter([
             {
                 index: true,
                 path: '/',
+                loader: () => fetch('http://localhost:3000/top-recipes'),
                 Component: Home,
-                // loader: () => fetch('/company-jobs.json'),
+
             },
             {
                 path: '/add-recipe',
                 element: <PrivateRoute>
                     <AddRecipe></AddRecipe>
                 </PrivateRoute>,
-                
+
+            },
+            {
+                path: '/all-recipes',
+                loader: () => fetch('http://localhost:3000/recipes'),
+                element: <AllRecipes></AllRecipes>,
+
+            },
+            {
+                path: '/recipe-details/:id',
+                loader: ({ params }) => fetch(`http://localhost:3000/recipes/${params.id}`),
+                element: <PrivateRoute>
+                    <RecipeDetails></RecipeDetails>
+                </PrivateRoute>,
+
             },
             {
                 path: '/my-recipes',
                 element: <PrivateRoute>
                     <MyRecipes></MyRecipes>
                 </PrivateRoute>,
-                
+
             },
             {
                 path: '/login',
