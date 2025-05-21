@@ -6,16 +6,16 @@ import OtherSignin from '../components/OtherSignin';
 
 
 const Login = () => {
-    const { signIn, googleSignIn, gitHubSignIn, setUser } = use(AuthContext);
+    const { user, signIn, googleSignIn, gitHubSignIn, setUser } = use(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
-
-    // useEffect(() => {
-    //     if (user) {
-    //         toast.info("You are already logged in.");
-    //         navigate('/');
-    //     }
-    // }, [user, navigate]);
+    
+    useEffect(() => {
+        if (user) {
+            navigate('/');
+            toast.info("You are already logged in.");
+        }
+    }, [user, navigate]);
 
     const handleLogin = (e) => {
         e.preventDefault();

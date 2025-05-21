@@ -4,6 +4,7 @@ import { AuthContext } from '../provider/AuthProvider';
 // import userProfile from '../../assets/user.png'
 // import jobSearch from '../../assets/job-search.png'
 import { ToastContainer, toast } from 'react-toastify';
+import DarkModeToggle from './DarkModeToggle';
 
 const Header = () => {
     const { user, logOut } = use(AuthContext);
@@ -15,7 +16,7 @@ const Header = () => {
         });
     }
     return (
-        <div className='lg:grid lg:grid-cols-12 max-w-[1240px] max-lg:justify-center mx-auto py-5 lg:items-center px-5'>
+        <div className='lg:grid lg:grid-cols-12 max-w-[1240px] max-lg:justify-center mx-auto py-5 lg:items-center px-5 bg-white dark:bg-black'>
 
             <div className='flex gap-4 lg:col-span-3 max-lg:justify-center items-center max-lg:mb-5'>
                 <Link to='/' className='flex gap-4 '>
@@ -28,7 +29,7 @@ const Header = () => {
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='/add-recipe'>Add Recipe</NavLink>
                 <NavLink to='/my-recipes'>My Recipes</NavLink>
-                <NavLink to='/register'>Register</NavLink>
+                <DarkModeToggle></DarkModeToggle>
             </div>
 
             <div className='lg:col-span-3 lg:flex justify-end items-center gap-5'>

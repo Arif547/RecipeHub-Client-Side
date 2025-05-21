@@ -21,7 +21,7 @@ const MyRecipes = () => {
         const confirm = window.confirm('Are you sure you want to delete this recipe?');
         if (!confirm) return;
 
-        const res = await fetch(`http://localhost:3000/recipes/${recipes.id}`, {
+        const res = await fetch(`http://localhost:3000/recipes/${id}`, {
             method: 'DELETE',
         });
         if (res.ok) {

@@ -3,6 +3,7 @@ import { Link, useLoaderData } from 'react-router';
 import RecipeCard from '../components/RecipeCard';
 import imgWiter from '../assets/image-1-1.png'
 import TestimonialCards from '../components/TestimonialCards';
+import { Typewriter } from 'react-simple-typewriter';
 
 const Home = () => {
     const initialRecipe = useLoaderData();
@@ -20,7 +21,24 @@ const Home = () => {
                 <div className="hero-overlay"></div>
                 <div className="hero-content text-neutral-content text-center">
                     <div>
-                        <h1 className="mb-5 text-5xl font-bold">Welcome to Recipe Hub</h1>
+                        <h1 className="mb-5 text-5xl font-bold"><Typewriter
+                            words={['Welcome to Recipe Hub',
+                                'Discover Delicious Recipes',
+                                'Save Your Favorite Dishes',
+                                'Share Your Culinary Creations',
+                                'Easy Meals for Busy Days',
+                                'Tasty Ideas for Every Occasion',
+                                'From Pantry to Plate',
+                                'Cook Smarter, Eat Better',
+                                'Your Kitchen Companion',
+                                'Explore, Cook, Enjoy']}
+                            loop={5}
+                            cursor
+                            cursorStyle='_'
+                            typeSpeed={70}
+                            deleteSpeed={50}
+                            delaySpeed={1000}
+                        /> </h1>
                         <p className="mb-5 text-2xl">
                             Your Personal Kitchen Companion
                         </p>
