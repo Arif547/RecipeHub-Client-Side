@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const MyRecipes = () => {
     const { user } = useContext(AuthContext);
     const [recipes, setRecipes] = useState([]);
     const [editingRecipe, setEditingRecipe] = useState(null);
     const [formData, setFormData] = useState({});
+
+
 
     useEffect(() => {
         fetch(`http://localhost:3000/my-recipes?email=${user.email}`)
@@ -18,7 +21,7 @@ const MyRecipes = () => {
         const confirm = window.confirm('Are you sure you want to delete this recipe?');
         if (!confirm) return;
 
-        const res = await fetch(`http://localhost:3000/recipes/${id}`, {
+        const res = await fetch(`http://localhost:3000/recipes/${recipes.id}`, {
             method: 'DELETE',
         });
         if (res.ok) {
@@ -32,26 +35,31 @@ const MyRecipes = () => {
         setFormData(recipe);
     };
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
-    };
 
     const handleUpdateSubmit = async (e) => {
         e.preventDefault();
-        const res = await fetch(`http://localhost:3000/recipes/${editingRecipe._id}`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData),
-        });
-        if (res.ok) {
-            toast.success('Recipe updated!');
-            const updated = recipes.map(r =>
-                r._id === editingRecipe._id ? { ...r, ...formData } : r
-            );
-            setRecipes(updated);
-            setEditingRecipe(null);
-        }
+        const form = e.target;
+        const formData = new FormData(form);
+        const updatedRecipe = Object.fromEntries(formData.entries())
+
+        fetch(`http://localhost:3000/recipes/${editingRecipe._id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedRecipe),
+        }).then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Coffee updated successfully.",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
     };
 
     return (
@@ -92,12 +100,12 @@ const MyRecipes = () => {
                 <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
                     <form onSubmit={handleUpdateSubmit} className="bg-white p-6 rounded-xl w-full max-w-lg">
                         <h3 className="text-xl font-bold mb-4">Update Recipe</h3>
-                        <input name="title" value={formData.title || ''} onChange={handleInputChange} placeholder="Title" className="input input-bordered w-full mb-2" />
-                        <input name="image" value={formData.image || ''} onChange={handleInputChange} placeholder="Image URL" className="input input-bordered w-full mb-2" />
-                        <input name="cuisine" value={formData.cuisine || ''} onChange={handleInputChange} placeholder="Cuisine" className="input input-bordered w-full mb-2" />
-                        <input name="prepTime" value={formData.prepTime || ''} onChange={handleInputChange} placeholder="Preparation Time" className="input input-bordered w-full mb-2" />
-                        <textarea name="ingredients" value={formData.ingredients || ''} onChange={handleInputChange} placeholder="Ingredients" className="textarea textarea-bordered w-full mb-2" />
-                        <textarea name="instructions" value={formData.instructions || ''} onChange={handleInputChange} placeholder="Instructions" className="textarea textarea-bordered w-full mb-4" />
+                        <input name="title" defaultValue={formData.title || ''} placeholder="Title" className="input input-bordered w-full mb-2" />
+                        <input name="image" defaultValue={formData.image || ''} placeholder="Image URL" className="input input-bordered w-full mb-2" />
+                        <input name="cuisine" defaultValue={formData.cuisine || ''} placeholder="Cuisine" className="input input-bordered w-full mb-2" />
+                        <input name="prepTime" defaultValue={formData.prepTime || ''} placeholder="Preparation Time" className="input input-bordered w-full mb-2" />
+                        <textarea name="ingredients" defaultValue={formData.ingredients || ''} placeholder="Ingredients" className="textarea textarea-bordered w-full mb-2" />
+                        <textarea name="instructions" defaultValue={formData.instructions || ''} placeholder="Instructions" className="textarea textarea-bordered w-full mb-4" />
 
                         <div className="flex justify-end gap-3">
                             <button type="submit" className="btn btn-success btn-sm">Save</button>
