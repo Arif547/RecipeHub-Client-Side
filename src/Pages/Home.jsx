@@ -14,6 +14,7 @@ const Home = () => {
 
     return (
         <div>
+            
             <Banner></Banner>
             {/* <div
                 className="hero h-[650px]"
@@ -50,7 +51,7 @@ const Home = () => {
                     </div>
                 </div>
             </div> */}
-            <slider></slider>
+            {/* <slider></slider> */}
 
 
             {/* Recipe Grid */}
@@ -77,7 +78,7 @@ const Home = () => {
                 <div className='max-w-7xl mx-auto py-20 px-5 lg:py-28 lg:flex mb-5'>
                     <div className='lg:w-1/2 mb-5'>
                         <Slide triggerOnce>
-                            <h2 className='text-5xl font-bold mb-10'>Do you need <br></br>⎯ some help?</h2>
+                            <h2 className='text-5xl text-black font-bold mb-10'>Do you need <br></br>⎯ some help?</h2>
                         </Slide>
                         <img src={imgWiter} alt="" />
                     </div>

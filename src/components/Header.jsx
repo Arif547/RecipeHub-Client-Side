@@ -3,8 +3,9 @@ import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 // import userProfile from '../../assets/user.png'
 import recipeBook from '../assets/recipe-book.png'
+import DarkMode from '../components/DarkMode';
 import { ToastContainer, toast } from 'react-toastify';
-import DarkModeToggle from './DarkModeToggle';
+
 
 const Header = () => {
     const { user, logOut } = use(AuthContext);
@@ -19,7 +20,7 @@ const Header = () => {
 
 
     return (
-        <div className='bg-white border-b border-green-200'>
+        <div className='border-b  border-green-200'>
             <div className='grid grid-cols-3 lg:grid-cols-12 max-w-[1240px] max-lg:justify-center mx-auto py-5 lg:items-center px-5'>
 
                 <div className='lg:hidden'>
@@ -51,7 +52,7 @@ const Header = () => {
 
                 </div>
 
-                <div className='lg:col-span-3 flex justify-end items-center gap-5'>
+                <div className='lg:col-span-3 flex justify-end items-center gap-3 md:gap-5'>
 
                     {
                         user ? <div className="relative inline-block">
@@ -86,6 +87,8 @@ const Header = () => {
                         //     <Link to='/register' className="btn  btn-secondary">Register</Link>
                         // </div>
                     }
+
+                    <DarkMode></DarkMode>
 
                     <ToastContainer />
 
