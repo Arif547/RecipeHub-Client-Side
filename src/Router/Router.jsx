@@ -20,7 +20,7 @@ export const Router = createBrowserRouter([
             {
                 index: true,
                 path: '/',
-                loader: () => fetch('http://localhost:3000/top-recipes'),
+                loader: () => fetch('https://recipe-server-ashy.vercel.app/top-recipes'),
                 Component: Home,
 
             },
@@ -33,13 +33,13 @@ export const Router = createBrowserRouter([
             },
             {
                 path: '/all-recipes',
-                loader: () => fetch('http://localhost:3000/recipes'),
+                loader: () => fetch('https://recipe-server-ashy.vercel.app/recipes'),
                 element: <AllRecipes></AllRecipes>,
 
             },
             {
                 path: '/recipe-details/:id',
-                loader: ({ params }) => fetch(`http://localhost:3000/recipes/${params.id}`),
+                loader: ({ params }) => fetch(`https://recipe-server-ashy.vercel.app/recipes/${params.id}`),
                 element: <PrivateRoute>
                     <RecipeDetails></RecipeDetails>
                 </PrivateRoute>,

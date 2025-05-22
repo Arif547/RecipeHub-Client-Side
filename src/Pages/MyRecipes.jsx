@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
-import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 
 const MyRecipes = () => {
@@ -12,14 +11,13 @@ const MyRecipes = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:3000/my-recipes?email=${user.email}`)
+        fetch(`https://recipe-server-ashy.vercel.app/my-recipes?email=${user.email}`)
             .then(res => res.json())
             .then(data => setRecipes(data));
     }, [user.email]);
 
     const handleDelete = async (id) => {
-        // const confirm = window.confirm('Are you sure you want to delete this recipe?');
-        // if (!confirm) return;
+
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -30,7 +28,7 @@ const MyRecipes = () => {
             confirmButtonText: "Yes, delete it!"
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const res = await fetch(`http://localhost:3000/recipes/${id}`, {
+                const res = await fetch(`https://recipe-server-ashy.vercel.app/recipes/${id}`, {
                     method: 'DELETE',
                 });
 
@@ -47,13 +45,7 @@ const MyRecipes = () => {
             }
         });
 
-        // const res = await fetch(`http://localhost:3000/recipes/${id}`, {
-        //     method: 'DELETE',
-        // });
-        // if (res.ok) {
-        //     setRecipes(recipes.filter(recipe => recipe._id !== id));
-        //     toast.success('Recipe deleted successfully');
-        // }
+
     };
 
     const handleUpdateClick = (recipe) => {
@@ -68,7 +60,7 @@ const MyRecipes = () => {
         const formData = new FormData(form);
         const updatedRecipe = Object.fromEntries(formData.entries())
 
-        fetch(`http://localhost:3000/recipes/${editingRecipe._id}`, {
+        fetch(`https://recipe-server-ashy.vercel.app/recipes/${editingRecipe._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

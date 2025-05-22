@@ -25,7 +25,7 @@ const RecipeDetails = () => {
 
         try {
             setIsLiking(true);
-            const res = await fetch(`http://localhost:3000/recipes/${_id}`, {
+            const res = await fetch(`https://recipe-server-ashy.vercel.app/recipes/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',

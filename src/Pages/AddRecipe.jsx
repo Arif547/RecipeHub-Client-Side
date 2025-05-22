@@ -21,7 +21,7 @@ const AddRecipe = () => {
         console.log(newRecipe);
 
         // send coffee data to the db
-        fetch('http://localhost:3000/recipes', {
+        fetch('https://recipe-server-ashy.vercel.app/recipes', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
