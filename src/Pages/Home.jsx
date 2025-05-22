@@ -6,6 +6,7 @@ import imgWiter from '../assets/image-1-1.png'
 import TestimonialCards from '../components/TestimonialCards';
 import { Typewriter } from 'react-simple-typewriter';
 import Banner from '../components/Banner';
+import { Fade, Slide } from "react-awesome-reveal";
 
 const Home = () => {
     const initialRecipe = useLoaderData();
@@ -54,7 +55,9 @@ const Home = () => {
 
             {/* Recipe Grid */}
             <div className='max-w-7xl mx-auto py-10 px-5 lg:py-28 md:py-20'>
-                <h2 className='text-5xl text-center font-bold mb-10'>Top Recipes Loved by Foodies</h2>
+                <Fade cascade>
+                    <h2 className='text-5xl text-center font-bold mb-10'>Top Recipes Loved by Foodies</h2>
+                </Fade>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                     {
                         recipes.map(recipe => <RecipeCard
@@ -73,9 +76,12 @@ const Home = () => {
             <section className='bg-[#F4E7DF]'>
                 <div className='max-w-7xl mx-auto py-20 px-5 lg:py-28 lg:flex mb-5'>
                     <div className='lg:w-1/2 mb-5'>
-                        <h2 className='text-5xl font-bold mb-10'>Do you need <br></br>⎯ some help?</h2>
+                        <Slide triggerOnce>
+                            <h2 className='text-5xl font-bold mb-10'>Do you need <br></br>⎯ some help?</h2>
+                        </Slide>
                         <img src={imgWiter} alt="" />
                     </div>
+
                     <div className='lg:w-1/2 flex flex-col gap-5'>
                         <div className="collapse collapse-plus bg-base-100 border border-base-300">
                             <input type="radio" name="my-accordion-3" defaultChecked />
