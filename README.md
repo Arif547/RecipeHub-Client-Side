@@ -1,8 +1,3 @@
-Here’s a professional and complete `README.md` file for your **RecipeHub** project, following all the assignment requirements:
-
----
-
-````markdown
 # RecipeHub 🍽️
 
 **Live Website:** [RecipeHub Live](https://aquamarine-bavarois-13cd20.netlify.app/)
@@ -77,8 +72,8 @@ To keep sensitive information secure, environment variables are used to store Fi
 
 1. Clone the repositories:
 
-   * Client: `git clone https://github.com/Programming-Hero-Web-Course4/b11a10-client-side-Arif547.git`
-   * Server: `git clone https://github.com/Programming-Hero-Web-Course4/b11a10-server-side-Arif547.git`
+   * Client: `git clone https://github.com/Arif547/RecipeHub-Client-Side.git`
+   * Server: `git clone https://github.com/Arif547/RecipeHub-Server-Side.git`
 
 2. Install dependencies:
 
