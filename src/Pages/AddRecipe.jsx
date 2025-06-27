@@ -16,7 +16,7 @@ const AddRecipe = () => {
         newRecipe.userPhoto = user.photoURL;
         newRecipe.createdAt = new Date().toISOString();
 
-        fetch('http://localhost:3000/recipes', {
+        fetch('https://recipe-server-ashy.vercel.app/recipes', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(newRecipe),

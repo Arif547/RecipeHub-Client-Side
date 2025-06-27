@@ -11,7 +11,7 @@ const Profile = () => {
     const [joinedDate, setJoinedDate] = useState('');
 
     useEffect(() => {
-        fetch(`http://localhost:3000/my-recipes?email=${user.email}`)
+        fetch(`https://recipe-server-ashy.vercel.app/my-recipes?email=${user.email}`)
             .then(res => res.json())
             .then(data => setTotalRecipes(data.length));
 

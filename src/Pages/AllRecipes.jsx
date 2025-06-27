@@ -11,9 +11,9 @@ const AllRecipes = () => {
 
     useEffect(() => {
         const fetchRecipes = async () => {
-            let url = 'http://localhost:3000/recipes';
+            let url = 'https://recipe-server-ashy.vercel.app/recipes';
             if (cuisine !== 'all') {
-                url = `http://localhost:3000/recipes/cuisine/${cuisine}`;
+                url = `https://recipe-server-ashy.vercel.app/recipes/cuisine/${cuisine}`;
             }
 
             try {
@@ -72,19 +72,19 @@ const AllRecipes = () => {
                         <option value="Indian">Indian</option>
                         <option value="Others">Others</option> */}
                 {/* Add more cuisines as needed */}
-            {/* </select>
+                {/* </select>
         </div> */}
 
 
-<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-    {
-        recipes.map(recipe => <RecipeCard
-            key={recipe._id}
-            recipes={recipes}
-            setRecipes={setRecipes}
-            recipe={recipe}></RecipeCard>)
-    }
-</div>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+                    {
+                        recipes.map(recipe => <RecipeCard
+                            key={recipe._id}
+                            recipes={recipes}
+                            setRecipes={setRecipes}
+                            recipe={recipe}></RecipeCard>)
+                    }
+                </div>
 
             </div >
         </div >
