@@ -33,9 +33,9 @@ const Header = () => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 text-[20px] font-medium space-y-4 rounded-box z-1 mt-3 w-52 p-2 shadow menu-navbar">
                             <NavLink to='/'>Home</NavLink>
-                            <NavLink to='/all-recipes'>All Recipe</NavLink>
+                            <NavLink to='/all-recipes'>Recipes</NavLink>
                             <NavLink to='/aboutUs'>About Us</NavLink>
-                            <NavLink to='/support'>Support</NavLink>
+                            <NavLink to='/services'>Services</NavLink>
                             <NavLink to='/contact'>Contact</NavLink>
                             <NavLink to='/add-recipe'>Add Recipe</NavLink>
                             <NavLink to='/my-recipes'>My Recipes</NavLink>
@@ -52,9 +52,9 @@ const Header = () => {
 
                 <div className='menu-navbar flex lg:gap-10 gap-4 text-[20px] font-medium col-span-6 justify-center align-middle max-lg:mb-5 max-lg:hidden'>
                     <NavLink to='/'>Home</NavLink>
-                    <NavLink to='/all-recipes'>All Recipe</NavLink>
+                    <NavLink to='/all-recipes'>Recipes</NavLink>
                     <NavLink to='/aboutUs'>About Us</NavLink>
-                    <NavLink to='/support'>Support</NavLink>
+                    <NavLink to='/services'>Services</NavLink>
                     <NavLink to='/contact'>Contact</NavLink>
                     <NavLink to='/add-recipe'>Add Recipe</NavLink>
                     <NavLink to='/my-recipes'>My Recipes</NavLink>

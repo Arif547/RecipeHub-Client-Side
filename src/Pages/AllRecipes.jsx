@@ -7,7 +7,7 @@ const AllRecipes = () => {
     const initialRecipe = useLoaderData();
     const [recipes, setRecipes] = useState(initialRecipe);
     const [cuisine, setCuisine] = useState('all'); // Default selection
-
+    const uniqueCuisines = ['all', ...new Set(initialRecipe.map(item => item.cuisine))];
 
     useEffect(() => {
         const fetchRecipes = async () => {
@@ -31,11 +31,24 @@ const AllRecipes = () => {
     return (
         <div>
             <div className='max-w-7xl mx-auto px-5 py-10 lg:py-28 md:py-20'>
-                <h2 className='text-3xl lg:text-5xl text-center font-bold mb-10'>All Recipes Loved by Foodies</h2>
+                <h2 className='text-3xl lg:text-5xl text-center font-bold mb-10'>All Recipes</h2>
 
+                <div className="text-center mb-8">
+                    <div className="tabs tabs-boxed justify-center flex-wrap gap-1.5">
+                        {uniqueCuisines.map((type, idx) => (
+                            <a
+                                key={idx}
+                                className={`tab  ${cuisine === type ? 'tab-active bg-[#008000] text-white' : ''} text-[16px] uppercase border border-[#008000]`}
+                                onClick={() => setCuisine(type)}
+                            >
+                                {type}
+                            </a>
+                        ))}
+                    </div>
+                </div>
 
                 {/* Dropdown for selecting cuisine */}
-                <div className="text-center mb-8">
+                {/* <div className="text-center mb-8">
                     <h3 className='text-2xl font-medium mb-4'>Filter By Cuisine: </h3>
                     <select
                         className="p-2 border rounded"
@@ -59,8 +72,8 @@ const AllRecipes = () => {
                         <option value="Indian">Indian</option>
                         <option value="Others">Others</option> */}
                         {/* Add more cuisines as needed */}
-                    </select>
-                </div>
+                    {/* </select> */}
+                {/* </div> */}
 
 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>

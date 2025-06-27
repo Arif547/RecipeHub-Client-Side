@@ -11,9 +11,9 @@ import PrivateRoute from '../provider/PrivateRoute';
 import AllRecipes from '../Pages/AllRecipes';
 import RecipeDetails from '../Pages/RecipeDetails';
 import AboutUs from '../Pages/AboutUs';
-import Support from '../Pages/Support';
 import Contact from '../Pages/Contact';
 import DashboardLayout from '../Pages/DashboardLayout';
+import Services from '../components/Services';
 
 export const Router = createBrowserRouter([
     {
@@ -33,8 +33,8 @@ export const Router = createBrowserRouter([
                 Component: AboutUs,
             },
             {
-                path: '/support',
-                Component: Support,
+                path: '/services',
+                Component: Services,
             },
             {
                 path: '/contact',

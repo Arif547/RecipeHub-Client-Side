@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import RecipeCard from '../components/RecipeCard';
-import LottieRect from '../components/LottieRect';
 import imgWiter from '../assets/image-1-1.png'
 import TestimonialCards from '../components/TestimonialCards';
 import { Typewriter } from 'react-simple-typewriter';
 import Banner from '../components/Banner';
 import { Fade, Slide } from "react-awesome-reveal";
+import Categorey from '../components/Categorey';
+import Services from '../components/Services';
+import AboutSection from '../components/AboutSection';
 
 const Home = () => {
     const initialRecipe = useLoaderData();
@@ -14,44 +16,8 @@ const Home = () => {
 
     return (
         <div>
-            
+
             <Banner></Banner>
-            {/* <div
-                className="hero h-[650px]"
-                style={{
-                    backgroundImage:
-                        "url(https://i.ibb.co/rR6XwXLt/original-fajita-sizzling-hot-on-iron-plate-2025-03-26-21-19-35-utc.jpg)",
-                }}
-            >
-                <div className="hero-overlay"></div>
-                <div className="hero-content text-neutral-content text-center">
-                    <div>
-                        <h1 className="mb-5 text-5xl font-bold"><Typewriter
-                            words={['Welcome to Recipe Hub',
-                                'Discover Delicious Recipes',
-                                'Save Your Favorite Dishes',
-                                'Share Your Culinary Creations',
-                                'Easy Meals for Busy Days',
-                                'Tasty Ideas for Every Occasion',
-                                'From Pantry to Plate',
-                                'Cook Smarter, Eat Better',
-                                'Your Kitchen Companion',
-                                'Explore, Cook, Enjoy']}
-                            loop={5}
-                            cursor
-                            cursorStyle='_'
-                            typeSpeed={70}
-                            deleteSpeed={50}
-                            delaySpeed={1000}
-                        /> </h1>
-                        <p className="mb-5 text-2xl">
-                            Your Personal Kitchen Companion
-                        </p>
-                        <button className="btn btn-primary">Get Started</button>
-                    </div>
-                </div>
-            </div> */}
-            {/* <slider></slider> */}
 
 
             {/* Recipe Grid */}
@@ -70,11 +36,21 @@ const Home = () => {
                 </div>
 
                 <div className='text-center mt-15'>
-                    <Link to='/all-recipes' className="btn btn-primary px-7 py-6 text-[20px] text-white hover:bg-secondary border-0 shadow-none">All Recipes</Link>
+                    <Link to='/all-recipes' className="btn btn-primary px-7 py-6 text-[20px] text-white hover:btn-secondary border-0 shadow-none">All Recipes</Link>
                 </div>
             </div>
 
-            <section className='bg-[#F4E7DF]'>
+            <AboutSection></AboutSection>
+
+
+
+
+            <Categorey></Categorey>
+
+            <TestimonialCards></TestimonialCards>
+            <Services></Services>
+
+            <section className='bg-[#fffdf7]'>
                 <div className='max-w-7xl mx-auto py-20 px-5 lg:py-28 lg:flex mb-5'>
                     <div className='lg:w-1/2 mb-5'>
                         <Slide triggerOnce>
@@ -86,7 +62,7 @@ const Home = () => {
                     <div className='lg:w-1/2 flex flex-col gap-5'>
                         <div className="collapse collapse-plus bg-base-100 border border-base-300">
                             <input type="radio" name="my-accordion-3" defaultChecked />
-                            <div className="collapse-title text-2xl font-semibold">
+                            <div className="collapse-title text-[20px] font-medium">
                                 How do I add a new recipe?
                             </div>
                             <div className="collapse-content text-[16px]">
@@ -96,7 +72,7 @@ const Home = () => {
 
                         <div className="collapse collapse-plus bg-base-100 border border-base-300">
                             <input type="radio" name="my-accordion-3" />
-                            <div className="collapse-title text-2xl font-semibold">
+                            <div className="collapse-title text-[20px] font-medium">
                                 Can I edit or delete my submitted recipes?
                             </div>
                             <div className="collapse-content text-[16px]">
@@ -106,7 +82,7 @@ const Home = () => {
 
                         <div className="collapse collapse-plus bg-base-100 border border-base-300">
                             <input type="radio" name="my-accordion-3" />
-                            <div className="collapse-title text-2xl font-semibold">
+                            <div className="collapse-title text-[20px] font-medium">
                                 Why can’t I like some recipes?
                             </div>
                             <div className="collapse-content text-[16px]">
@@ -116,7 +92,7 @@ const Home = () => {
 
                         <div className="collapse collapse-plus bg-base-100 border border-base-300">
                             <input type="radio" name="my-accordion-3" />
-                            <div className="collapse-title text-2xl font-semibold">
+                            <div className="collapse-title text-[20px] font-medium">
                                 What happens when I click the “Like” button?
                             </div>
                             <div className="collapse-content text-[16px]">
@@ -126,7 +102,7 @@ const Home = () => {
 
                         <div className="collapse collapse-plus bg-base-100 border border-base-300">
                             <input type="radio" name="my-accordion-3" />
-                            <div className="collapse-title text-2xl font-semibold">
+                            <div className="collapse-title text-[20px] font-medium">
                                 How do I use the cuisine filter on the All Recipes page?
                             </div>
                             <div className="collapse-content text-[16px]">
@@ -137,9 +113,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-
-            <TestimonialCards></TestimonialCards>
-            <LottieRect />
 
         </div >
     );

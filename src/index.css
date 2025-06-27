@@ -3,9 +3,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@plugin "daisyui" {
-  
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;  
+  --color-primary: #008000;
+  --color-secondary: #00A86B;
+
 }
+@plugin "daisyui/theme" {
+
+  name: "dark";
+  --color-primary: #00A86B;
+  --color-secondary: #008000;
+}
+
 
 @custom-variant dark (&:where([data-theme=night], [data-theme=night] *));
 

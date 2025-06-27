@@ -23,10 +23,10 @@ const TestimonialCards = () => {
         }
     ];
     return (
-        <div>
-            <section className="py-[112px] max-w-7xl mx-auto bg-base-100 px-5 md:px-16">
+        <div className='bg-[#fffdf7]'>
+            <section className="py-[112px] max-w-7xl mx-auto px-5 md:px-16">
                 <Slide direction="down">
-                    <h2 className="text-center text-3xl md:text-4xl font-bold mb-10">What Our Users Say</h2>
+                    <h2 className="text-center text-black text-3xl md:text-4xl lg:text-5xl font-bold mb-10">What Our Users Say</h2>
                 </Slide>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {testimonials.map((t, i) => (
