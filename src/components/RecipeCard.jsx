@@ -24,7 +24,7 @@ const RecipeCard = ({ recipe }) => {
                                 View Details
                             </Link>
                             <p className="text-[18px] flex  items-center gap-2"><FaHeart /> {recipe.likes}</p>
-                            
+
 
                         </div>
 

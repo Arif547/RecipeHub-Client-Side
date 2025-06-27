@@ -1,68 +1,175 @@
 import React from 'react';
 import { Link } from 'react-router';
-import recipeBook from '../assets/recipe-book.png'
+import { IoRestaurantOutline } from 'react-icons/io5';
+import { FaTwitter, FaYoutube, FaFacebook, FaInstagram, FaHeart } from 'react-icons/fa';
 
 const Footer = () => {
-    return (
-        <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content gap-6 rounded p-10">
-            <div className=''>
-                <Link to='/' className='flex gap-4 items-center'>
-                    <img src={recipeBook} alt="" className='w-[40px] h-[40px]' />
-                    <h1 className='text-[30px] font-bold max-md:hidden'>Recipe Hub</h1>
-                </Link>
-            </div>
-            <nav className="grid grid-flow-col gap-4">
-                <Link to='/aboutUs' className="link link-hover text-[16px]">About us</Link>
-                <Link to='/contact' className="link link-hover text-[16px]">Contact</Link>
-                <Link to='/all-recipes' className="link link-hover text-[16px]">all-recipes</Link>
-                <Link to='/support' className="link link-hover text-[16px]">support</Link>
-            </nav>
+    const currentYear = new Date().getFullYear();
 
-             <nav>
-
-                    <div className="grid grid-flow-col gap-4">
-                        <Link to="https://x.com/">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                className="fill-current">
-                                <path
-                                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-                            </svg>
-                        </Link>
-                        <Link to="https://youtube.com/">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                className="fill-current">
-                                <path
-                                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-                            </svg>
-                        </Link>
-                        <Link to="https://www.facebook.com/">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                className="fill-current">
-                                <path
-                                    d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-                            </svg>
-                        </Link>
-                    </div>
-                </nav>
-
-                 <aside>
-                    <p>Copyright © {new Date().getFullYear()} - All right reserved by Recipe Hub</p>
-                </aside>
- 
+    const navigationLinks = [
+        { path: '/aboutUs', label: 'About Us' },
+        { path: '/contact', label: 'Contact' },
+        { path: '/all-recipes', label: 'All Recipes' },
+        { path: '/services', label: 'Services' },
         
-        </footer >
+    ];
+
+    const socialLinks = [
+        { href: 'https://twitter.com/', icon: FaTwitter, label: 'Twitter', color: 'hover:text-blue-400' },
+        { href: 'https://youtube.com/', icon: FaYoutube, label: 'YouTube', color: 'hover:text-red-500' },
+        { href: 'https://facebook.com/', icon: FaFacebook, label: 'Facebook', color: 'hover:text-blue-600' },
+        { href: 'https://instagram.com/', icon: FaInstagram, label: 'Instagram', color: 'hover:text-pink-500' }
+    ];
+
+    return (
+        <footer className="bg-base-200 text-base-content">
+            {/* Main Footer Content */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    {/* Logo & Brand Section */}
+                    <div className="lg:col-span-2">
+                        <Link
+                            to="/"
+                            className="flex items-center space-x-3 group mb-4 w-fit"
+                        >
+                            <div className="relative p-2 rounded-xl bg-gradient-to-br from-primary to-secondary shadow-lg group-hover:shadow-xl transition-all duration-300">
+                                <IoRestaurantOutline
+                                    className="w-6 h-6 md:w-8 md:h-8 text-white transform group-hover:rotate-12 transition-transform duration-300"
+                                />
+                                <div className="absolute inset-0 bg-white/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                            </div>
+                            <div>
+                                <h2 className="text-2xl md:text-3xl font-bold text-base-content group-hover:text-primary transition-colors duration-300">
+                                    Recipe Hub
+                                </h2>
+                                <p className="text-sm text-base-content/60 -mt-1">
+                                    Delicious Recipes
+                                </p>
+                            </div>
+                        </Link>
+
+                        <p className="text-base-content/70 text-sm md:text-base max-w-md leading-relaxed">
+                            Discover amazing recipes from around the world. Join our community of food lovers and share your culinary adventures with Recipe Hub.
+                        </p>
+
+                        {/* Newsletter Signup */}
+                        <div className="mt-6">
+                            <h3 className="text-lg font-semibold mb-3">Stay Updated</h3>
+                            <div className="flex flex-col sm:flex-row gap-2 max-w-md">
+                                <input
+                                    type="email"
+                                    placeholder="Enter your email"
+                                    className="input input-bordered flex-1 text-sm"
+                                />
+                                <button className="btn btn-primary btn-sm sm:btn-md">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Quick Links */}
+                    <div>
+                        <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+                        <nav className="space-y-2">
+                            {navigationLinks.map((link) => (
+                                <Link
+                                    key={link.path}
+                                    to={link.path}
+                                    className="block text-base-content/70 hover:text-primary transition-colors duration-200 text-sm md:text-base"
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </nav>
+                    </div>
+
+                    {/* Contact & Social */}
+                    <div>
+                        <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
+
+                        {/* Contact Info */}
+                        <div className="space-y-2 mb-6">
+                            <p className="text-base-content/70 text-sm">
+                                📧 hello@recipehub.com
+                            </p>
+                            <p className="text-base-content/70 text-sm">
+                                📞 +1 (555) 123-4567
+                            </p>
+                            <p className="text-base-content/70 text-sm">
+                                📍 123 Food Street, Culinary City
+                            </p>
+                        </div>
+
+                        {/* Social Media Links */}
+                        <div>
+                            <h4 className="text-base font-medium mb-3">Follow Us</h4>
+                            <div className="flex space-x-3">
+                                {socialLinks.map((social) => {
+                                    const IconComponent = social.icon;
+                                    return (
+                                        <a
+                                            key={social.label}
+                                            href={social.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={`
+                                                p-2 rounded-full bg-base-300 text-base-content/70 
+                                                ${social.color} hover:bg-base-100 
+                                                transform hover:scale-110 transition-all duration-200
+                                                shadow-sm hover:shadow-md
+                                            `}
+                                            aria-label={social.label}
+                                        >
+                                            <IconComponent className="w-5 h-5" />
+                                        </a>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Bottom Bar */}
+            <div className="border-t border-base-300">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                    <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0">
+
+                        {/* Copyright */}
+                        <div className="flex items-center space-x-1 text-sm text-base-content/60 order-2 md:order-1">
+                            <span>© {currentYear} Recipe Hub. All rights reserved.</span>
+                            <span className="hidden sm:inline">Made with</span>
+                            <FaHeart className="w-4 h-4 text-red-500 hidden sm:inline animate-pulse" />
+                            <span className="hidden sm:inline">for food lovers</span>
+                        </div>
+
+                        {/* Legal Links */}
+                        {/* <div className="flex items-center space-x-6 text-sm order-1 md:order-2">
+                            <Link
+                                to="/privacy"
+                                className="text-base-content/60 hover:text-primary transition-colors duration-200"
+                            >
+                                Privacy Policy
+                            </Link>
+                            <Link
+                                to="/terms"
+                                className="text-base-content/60 hover:text-primary transition-colors duration-200"
+                            >
+                                Terms of Service
+                            </Link>
+                            <Link
+                                to="/cookies"
+                                className="text-base-content/60 hover:text-primary transition-colors duration-200"
+                            >
+                                Cookie Policy
+                            </Link>
+                        </div> */}
+                    </div>
+                </div>
+            </div>
+        </footer>
     );
 };
 

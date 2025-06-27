@@ -31,7 +31,7 @@ const AllRecipes = () => {
     return (
         <div>
             <div className='max-w-7xl mx-auto px-5 py-10 lg:py-28 md:py-20'>
-                <h2 className='text-3xl lg:text-5xl text-center font-bold mb-10'>All Recipes</h2>
+                <h2 className='text-3xl lg:text-5xl text-center font-bold mb-10'>All Recipes Loved by Foodies</h2>
 
                 <div className="text-center mb-8">
                     <div className="tabs tabs-boxed justify-center flex-wrap gap-1.5">
@@ -66,28 +66,28 @@ const AllRecipes = () => {
                         {/* {
                             initialRecipe.map(cuisine => <Cuisine key={cuisine._id} cuisine={cuisine}></Cuisine>)
                         } */}
-                        {/* <option value="all">All</option>
+                {/* <option value="all">All</option>
                         <option value="Italian">Italian</option>
                         <option value="Mexican">Mexican</option>
                         <option value="Indian">Indian</option>
                         <option value="Others">Others</option> */}
-                        {/* Add more cuisines as needed */}
-                    {/* </select> */}
-                {/* </div> */}
+                {/* Add more cuisines as needed */}
+            {/* </select>
+        </div> */}
 
 
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-                    {
-                        recipes.map(recipe => <RecipeCard
-                            key={recipe._id}
-                            recipes={recipes}
-                            setRecipes={setRecipes}
-                            recipe={recipe}></RecipeCard>)
-                    }
-                </div>
+<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+    {
+        recipes.map(recipe => <RecipeCard
+            key={recipe._id}
+            recipes={recipes}
+            setRecipes={setRecipes}
+            recipe={recipe}></RecipeCard>)
+    }
+</div>
 
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 

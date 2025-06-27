@@ -14,6 +14,7 @@ import AboutUs from '../Pages/AboutUs';
 import Contact from '../Pages/Contact';
 import DashboardLayout from '../Pages/DashboardLayout';
 import Services from '../components/Services';
+import Profile from '../Pages/Profile';
 
 export const Router = createBrowserRouter([
     {
@@ -29,6 +30,19 @@ export const Router = createBrowserRouter([
 
             },
             {
+                path: '/all-recipes',
+                loader: () => fetch('http://localhost:3000/recipes'),
+                element: <AllRecipes></AllRecipes>,
+
+            },
+            {
+                path: 'recipe-details/:id',
+                loader: ({ params }) => fetch(`http://localhost:3000/recipes/${params.id}`),
+                element: <RecipeDetails></RecipeDetails>
+                ,
+
+            },
+            {
                 path: '/aboutUs',
                 Component: AboutUs,
             },
@@ -39,34 +53,6 @@ export const Router = createBrowserRouter([
             {
                 path: '/contact',
                 Component: Contact,
-            },
-            {
-                path: '/add-recipe',
-                element: <PrivateRoute>
-                    <AddRecipe></AddRecipe>
-                </PrivateRoute>,
-
-            },
-            {
-                path: '/all-recipes',
-                loader: () => fetch('http://localhost:3000/recipes'),
-                element: <AllRecipes></AllRecipes>,
-
-            },
-            {
-                path: '/recipe-details/:id',
-                loader: ({ params }) => fetch(`http://localhost:3000/recipes/${params.id}`),
-                element: <PrivateRoute>
-                    <RecipeDetails></RecipeDetails>
-                </PrivateRoute>,
-
-            },
-            {
-                path: '/my-recipes',
-                element: <PrivateRoute>
-                    <MyRecipes></MyRecipes>
-                </PrivateRoute>,
-
             },
             {
                 path: '/login',
@@ -81,10 +67,30 @@ export const Router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoute>
-            <DashboardLayout></DashboardLayout>        
-            </PrivateRoute>,        
+            <DashboardLayout></DashboardLayout>
+        </PrivateRoute>,
         children: [
+            {
+                index: true,                
+                element: <PrivateRoute>
+                    <Profile></Profile>
+                </PrivateRoute>,
+            },
+            {
+                index: true,
+                path: 'add-recipe',
+                element: <PrivateRoute>
+                    <AddRecipe></AddRecipe>
+                </PrivateRoute>,
 
+            },
+            {
+                path: 'my-recipes',
+                element: <PrivateRoute>
+                    <MyRecipes></MyRecipes>
+                </PrivateRoute>,
+
+            },
         ]
     }
 

@@ -45,7 +45,7 @@ const Categorey = () => {
                         {uniqueCuisines.map((type, idx) => (
                             <a
                                 key={idx}
-                                className={`tab  ${cuisine === type ? 'tab-active bg-[#008000] text-white' : ''} text-[16px] uppercase border border-[#008000]`}
+                                className={`tab  ${cuisine === type ? 'tab-active bg-[#008000] text-white' : ''} text-[16px] uppercase border border-[#008000] `}
                                 onClick={() => setCuisine(type)}
                             >
                                 {type}

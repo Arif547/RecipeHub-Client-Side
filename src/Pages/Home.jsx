@@ -51,7 +51,7 @@ const Home = () => {
             <Services></Services>
 
             <section className='bg-[#fffdf7]'>
-                <div className='max-w-7xl mx-auto py-20 px-5 lg:py-28 lg:flex mb-5'>
+                <div className='max-w-7xl mx-auto py-20 px-5 lg:py-28 lg:flex'>
                     <div className='lg:w-1/2 mb-5'>
                         <Slide triggerOnce>
                             <h2 className='text-5xl text-black font-bold mb-10'>Do you need <br></br>⎯ some help?</h2>
