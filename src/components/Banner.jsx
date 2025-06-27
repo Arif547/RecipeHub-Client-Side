@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import { Typewriter } from 'react-simple-typewriter';
 
 const Banner = () => {
@@ -37,7 +38,9 @@ const Banner = () => {
                                 <p className="mb-5 text-2xl">
                                     Your Personal Kitchen Companion
                                 </p>
-                                <button className="btn btn-primary">Get Started</button>
+                                <Link to='/aboutUs'>
+                                    <button className="btn btn-primary border-0 px-8 py-6 text-[20px] hover:bg-secondary ">Get Started</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -78,7 +81,9 @@ const Banner = () => {
                                 <p className="mb-5 text-2xl">
                                     Your Personal Kitchen Companion
                                 </p>
-                                <button className="btn btn-primary">Get Started</button>
+                                <Link to='/aboutUs'>
+                                    <button className="btn btn-primary border-0 px-8 py-6 text-[20px] hover:bg-secondary ">Get Started</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -119,7 +124,9 @@ const Banner = () => {
                                 <p className="mb-5 text-2xl">
                                     Your Personal Kitchen Companion
                                 </p>
-                                <button className="btn btn-primary">Get Started</button>
+                                <Link to='/aboutUs'>
+                                    <button className="btn btn-primary border-0 px-8 py-6 text-[20px] hover:bg-secondary ">Get Started</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -160,7 +167,9 @@ const Banner = () => {
                                 <p className="mb-5 text-2xl">
                                     Your Personal Kitchen Companion
                                 </p>
-                                <button className="btn btn-primary">Get Started</button>
+                                <Link to='/aboutUs'>
+                                    <button className="btn btn-primary border-0 px-8 py-6 text-[20px] hover:bg-secondary ">Get Started</button>
+                                </Link>
                             </div>
                         </div>
                     </div>

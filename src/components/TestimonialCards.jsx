@@ -24,17 +24,17 @@ const TestimonialCards = () => {
     ];
     return (
         <div>
-            <section className="py-12 max-w-7xl mx-auto bg-base-100 px-5 md:px-16">
+            <section className="py-[112px] max-w-7xl mx-auto bg-base-100 px-5 md:px-16">
                 <Slide direction="down">
                     <h2 className="text-center text-3xl md:text-4xl font-bold mb-10">What Our Users Say</h2>
                 </Slide>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {testimonials.map((t, i) => (
-                        <div key={i} className="card bg-base-200 shadow-xl p-6">
+                        <div key={i} className="card bg-white shadow-xl p-6">
                             <div className="flex items-center gap-4 mb-4">
                                 <img src={t.image} alt={t.name} className="w-16 h-16 rounded-full object-cover grayscale" />
                                 <div>
-                                    <p className="font-semibold">{t.name}</p>
+                                    <p className="font-semibold text-2xl text-black mb-1">{t.name}</p>
                                     <p className="text-sm text-gray-500">{t.role}</p>
                                 </div>
                             </div>

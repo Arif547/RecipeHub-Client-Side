@@ -19,12 +19,13 @@ const Header = () => {
     }
 
 
+
     return (
-        <div className='border-b  border-green-200'>
+        <div className='border-b  border-green-200 sticky top-0 z-5 bg-base-100'>
             <div className='grid grid-cols-3 lg:grid-cols-12 max-w-[1240px] max-lg:justify-center mx-auto py-5 lg:items-center px-5'>
 
                 <div className='lg:hidden'>
-                    <div className="dropdown">
+                    <div className="dropdown bg-base-100">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /> </svg>
                         </div>
@@ -32,6 +33,10 @@ const Header = () => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 text-[20px] font-medium space-y-4 rounded-box z-1 mt-3 w-52 p-2 shadow menu-navbar">
                             <NavLink to='/'>Home</NavLink>
+                            <NavLink to='/all-recipes'>All Recipe</NavLink>
+                            <NavLink to='/aboutUs'>About Us</NavLink>
+                            <NavLink to='/support'>Support</NavLink>
+                            <NavLink to='/contact'>Contact</NavLink>
                             <NavLink to='/add-recipe'>Add Recipe</NavLink>
                             <NavLink to='/my-recipes'>My Recipes</NavLink>
                         </ul>
@@ -47,6 +52,10 @@ const Header = () => {
 
                 <div className='menu-navbar flex lg:gap-10 gap-4 text-[20px] font-medium col-span-6 justify-center align-middle max-lg:mb-5 max-lg:hidden'>
                     <NavLink to='/'>Home</NavLink>
+                    <NavLink to='/all-recipes'>All Recipe</NavLink>
+                    <NavLink to='/aboutUs'>About Us</NavLink>
+                    <NavLink to='/support'>Support</NavLink>
+                    <NavLink to='/contact'>Contact</NavLink>
                     <NavLink to='/add-recipe'>Add Recipe</NavLink>
                     <NavLink to='/my-recipes'>My Recipes</NavLink>
 

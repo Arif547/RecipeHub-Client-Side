@@ -57,9 +57,9 @@ const Home = () => {
             {/* Recipe Grid */}
             <div className='max-w-7xl mx-auto py-10 px-5 lg:py-28 md:py-20'>
                 <Fade cascade>
-                    <h2 className='text-5xl text-center font-bold mb-10'>Top Recipes Loved by Foodies</h2>
+                    <h2 className='text-5xl text-center font-bold mb-12'>Top Recipes</h2>
                 </Fade>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
                     {
                         recipes.map(recipe => <RecipeCard
                             key={recipe._id}
@@ -70,7 +70,7 @@ const Home = () => {
                 </div>
 
                 <div className='text-center mt-15'>
-                    <Link to='/all-recipes' className="btn btn-primary">See All Recipes </Link>
+                    <Link to='/all-recipes' className="btn btn-primary px-7 py-6 text-[20px] text-white hover:bg-secondary border-0 shadow-none">All Recipes</Link>
                 </div>
             </div>
 

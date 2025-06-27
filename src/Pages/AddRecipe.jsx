@@ -21,7 +21,7 @@ const AddRecipe = () => {
         console.log(newRecipe);
 
         // send coffee data to the db
-        fetch('https://recipe-server-ashy.vercel.app/recipes', {
+        fetch('http://localhost:3000/recipes', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -97,6 +97,11 @@ const AddRecipe = () => {
                                 </label>
                             ))}
                         </div>
+                    </fieldset>
+
+                    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4 md:col-span-2">
+                        <label className="label">Description</label>
+                        <textarea class="textarea h-24 w-full" placeholder="Description" name='Description'></textarea>
                     </fieldset>
 
                     {/* <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">

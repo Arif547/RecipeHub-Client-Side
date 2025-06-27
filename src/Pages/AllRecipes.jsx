@@ -11,9 +11,9 @@ const AllRecipes = () => {
 
     useEffect(() => {
         const fetchRecipes = async () => {
-            let url = 'https://recipe-server-ashy.vercel.app/recipes';
+            let url = 'http://localhost:3000/recipes';
             if (cuisine !== 'all') {
-                url = `https://recipe-server-ashy.vercel.app/recipes/cuisine/${cuisine}`;
+                url = `http://localhost:3000/recipes/cuisine/${cuisine}`;
             }
 
             try {

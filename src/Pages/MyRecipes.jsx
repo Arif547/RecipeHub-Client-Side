@@ -11,7 +11,7 @@ const MyRecipes = () => {
 
 
     useEffect(() => {
-        fetch(`https://recipe-server-ashy.vercel.app/my-recipes?email=${user.email}`)
+        fetch(`http://localhost:3000/my-recipes?email=${user.email}`)
             .then(res => res.json())
             .then(data => setRecipes(data));
     }, [user.email]);
@@ -28,7 +28,7 @@ const MyRecipes = () => {
             confirmButtonText: "Yes, delete it!"
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const res = await fetch(`https://recipe-server-ashy.vercel.app/recipes/${id}`, {
+                const res = await fetch(`http://localhost:3000/recipes/${id}`, {
                     method: 'DELETE',
                 });
 
@@ -60,7 +60,7 @@ const MyRecipes = () => {
         const formData = new FormData(form);
         const updatedRecipe = Object.fromEntries(formData.entries())
 
-        fetch(`https://recipe-server-ashy.vercel.app/recipes/${editingRecipe._id}`, {
+        fetch(`http://localhost:3000/recipes/${editingRecipe._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -70,9 +70,9 @@ const MyRecipes = () => {
             .then(data => {
                 if (data.modifiedCount) {
                     Swal.fire({
-                        position: "top-end",
+                        
                         icon: "success",
-                        title: "Coffee updated successfully.",
+                        title: "Recipe updated successfully.",
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -139,10 +139,12 @@ const MyRecipes = () => {
                         <input name="prepTime" defaultValue={formData.prepTime || ''} placeholder="Preparation Time" className="input input-bordered w-full mb-2" />
                         <textarea name="ingredients" defaultValue={formData.ingredients || ''} placeholder="Ingredients" className="textarea textarea-bordered w-full mb-2" />
                         <textarea name="instructions" defaultValue={formData.instructions || ''} placeholder="Instructions" className="textarea textarea-bordered w-full mb-4" />
+                        <textarea name='Description' class="textarea h-24 w-full" defaultValue={formData.Description || ''} placeholder="Description"></textarea>
 
-                        <div className="flex justify-end gap-3">
-                            <button type="submit" className="btn btn-success btn-sm">Save</button>
-                            <button onClick={() => setEditingRecipe(null)} type="button" className="btn btn-outline btn-sm">Cancel</button>
+
+                        <div className="flex justify-end mt-2.5 gap-3">
+                            <button type="submit" className="btn btn-primary hover:btn-secondary">Save</button>
+                            <button onClick={() => setEditingRecipe(null)} type="button" className="btn btn-primary btn-outline">Cancel</button>
                         </div>
                     </form>
                 </div>

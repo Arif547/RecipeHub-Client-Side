@@ -10,6 +10,10 @@ import Register from '../Pages/Register';
 import PrivateRoute from '../provider/PrivateRoute';
 import AllRecipes from '../Pages/AllRecipes';
 import RecipeDetails from '../Pages/RecipeDetails';
+import AboutUs from '../Pages/AboutUs';
+import Support from '../Pages/Support';
+import Contact from '../Pages/Contact';
+import DashboardLayout from '../Pages/DashboardLayout';
 
 export const Router = createBrowserRouter([
     {
@@ -20,9 +24,21 @@ export const Router = createBrowserRouter([
             {
                 index: true,
                 path: '/',
-                loader: () => fetch('https://recipe-server-ashy.vercel.app/top-recipes'),
+                loader: () => fetch('http://localhost:3000/top-recipes'),
                 Component: Home,
 
+            },
+            {
+                path: '/aboutUs',
+                Component: AboutUs,
+            },
+            {
+                path: '/support',
+                Component: Support,
+            },
+            {
+                path: '/contact',
+                Component: Contact,
             },
             {
                 path: '/add-recipe',
@@ -33,20 +49,20 @@ export const Router = createBrowserRouter([
             },
             {
                 path: '/all-recipes',
-                loader: () => fetch('https://recipe-server-ashy.vercel.app/recipes'),
+                loader: () => fetch('http://localhost:3000/recipes'),
                 element: <AllRecipes></AllRecipes>,
 
             },
             {
                 path: '/recipe-details/:id',
-                loader: ({ params }) => fetch(`https://recipe-server-ashy.vercel.app/recipes/${params.id}`),
+                loader: ({ params }) => fetch(`http://localhost:3000/recipes/${params.id}`),
                 element: <PrivateRoute>
                     <RecipeDetails></RecipeDetails>
                 </PrivateRoute>,
 
             },
             {
-                path: '/my-recipes',                
+                path: '/my-recipes',
                 element: <PrivateRoute>
                     <MyRecipes></MyRecipes>
                 </PrivateRoute>,
@@ -61,7 +77,19 @@ export const Router = createBrowserRouter([
                 Component: Register,
             }
         ]
+    },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute>
+            <DashboardLayout></DashboardLayout>        
+            </PrivateRoute>,        
+        children: [
+
+        ]
     }
+
+
+
 ])
 
 export default Router;
